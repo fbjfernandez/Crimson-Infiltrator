@@ -1,57 +1,47 @@
-# Kessel Run: Pyke Syndicate Simulator
+🚀 Crimson Infiltrator: Core Intelligence Engine
 
-Simulador de logística, economía galáctica y cálculo de rutas de contrabando
-inspirado en Star Wars. React + TypeScript + Zustand + Tailwind CSS.
+> Un simulador de gestión de recursos y estrategia basado en eventos. El proyecto está enfocado en la aplicación de patrones de diseño limpios, separación de responsabilidades (SoC) y una arquitectura Full Stack robusta orientada a transacciones en tiempo real.
 
-## Instalación
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Zustand](https://img.shields.io/badge/Zustand-764ABC?style=for-the-badge&logo=react&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 
-```bash
-npm install
-npm run dev       # entorno de desarrollo
-npm run build     # build de producción (dist/)
-```
+---
 
-## Arquitectura
+## 🏗️ Architecture & Tech Stack
 
-```
-src/
-  types/game.ts         Interfaces del dominio (Planet, Starship, RouteNode, etc.)
-  data/planets.ts        Base de datos estática de los 4 nodos galácticos
-  data/bountyHunters.ts  Roster de cazadores de recompensas de la Cantina
-  utils/routeEngine.ts   Motor matemático: distancia vectorial + probabilidad
-                          combinada de interceptación/peligro espacial
-  store/gameStore.ts     Store Zustand: estado global, acciones y la máquina
-                          de estados de viaje (IDLE → IN_TRANSIT →
-                          INTERCEPTED → ARRIVED)
-  components/
-    SidebarStatus.tsx     Créditos, vitales de la nave, medidor de Calor Imperial
-    GalaxyMap.tsx          Selector de destino + análisis de rutas
-    RouteAnalysis.tsx      Desglose de coeficientes de riesgo por ruta
-    TerminalConsole.tsx    Log de consola (memoizado para evitar re-renders)
-    TradePanel.tsx         Compra/venta de mercancía por volumen
-    ShipUpgrades.tsx       Mejoras de hipermotor y escudos
-    Cantina.tsx             Contratación de cazadores de recompensas
-    CrisisModal.tsx         Eventos aleatorios de crisis (bloqueantes)
-    GameOverScreen.tsx      Pantalla de victoria/derrota + estadísticas
-```
+El sistema opera bajo un modelo de tres capas, delegando el procesamiento pesado y la validación matemática al servidor para mantener un cliente ligero y seguro contra vulnerabilidades.
 
-## Algoritmos clave
+*   **Frontend (Presentación):** Construido con React y TypeScript. Implementa tipado estricto para bloquear estados inválidos en tiempo de compilación y optimiza el ciclo de vida de la UI utilizando Zustand con selectores atómicos.
+*   **Backend (Lógica de Negocio):** Microservicio RESTful desarrollado en Python con FastAPI. Centraliza el motor predictivo de economía y la resolución probabilística de los eventos.
+*   **Base de Datos (Persistencia):** Integración relacional con PostgreSQL (Supabase) para garantizar la integridad de las sesiones, evitar manipulaciones en el cliente y asegurar los datos de los usuarios.
 
-- **Distancia vectorial**: `sqrt((x2-x1)² + (y2-y1)²)` entre planetas en el
-  plano cartesiano galáctico (`routeEngine.ts`).
-- **Riesgo combinado**: cada ruta pondera el índice de ley del destino y el
-  peligro espacial natural según su perfil (Comercial / Contrabando / Atajo),
-  amplificado por el Calor Imperial acumulado del jugador.
-- **Probabilidad de fallo del viaje**: se tratan interceptación y peligro
-  espacial como eventos independientes: `P(fallo) = 1 - (1-Pa)(1-Pb)`.
-- **Mitigación de cazadores de recompensas**: `combatPower / 100` reduce
-  proporcionalmente el daño de casco y los costos de soborno/peaje durante
-  una crisis activa.
+---
 
-## Extensiones sugeridas
+## ⚙️ Core Systems & Logic
 
-- Persistir el estado con el middleware `persist` de Zustand.
-- Fluctuación de precios de mercado en tiempo real vía `setInterval` sobre
-  `basePrice` con ruido aleatorio y eventos de galaxia.
-- Animación de la nave sobre el mapa cartesiano en `<GalaxyMap />` usando
-  las coordenadas X/Y ya definidas en `Planet`.
+La simulación gira en torno a motores de reglas de negocio interconectados:
+
+*   **Dynamic Pricing Engine:** El backend en Python altera el valor del mercado calculando penalizaciones por saturación (oferta y demanda) y modificadores regionales basados en el contexto narrativo de cada planeta.
+*   **Event Resolution:** Algoritmos del servidor que cruzan las variables de estado del jugador (como el nivel de *Imperial Heat*) para calcular probabilidades de éxito y generar consecuencias operacionales.
+*   **Resource State Management:** Control estricto de recursos clave como Créditos, Combustible, Integridad del Casco y Niveles de Infiltración.
+
+---
+
+## 🛠️ Roadmap & Future AI Integration
+
+El proyecto se encuentra en una transición activa hacia una infraestructura de microservicios inteligente:
+
+*   [ ] Migración del estado local (Zustand) hacia el motor de validación central en FastAPI.
+*   [ ] Implementación de modelos de Machine Learning (Scikit-Learn) en el backend para predecir fluctuaciones del mercado basadas en el historial del jugador.
+*   [ ] Desarrollo de un agente conversacional (NLP) que actúe como informante dinámico dentro de la simulación.
+
+---
+
+## 👨‍💻 Autor
+
+**Fernando Benito Joaquin Fernandez Navarrete**
+*Estudiante de Ingeniería de Sistemas | Desarrollador Front-End*
